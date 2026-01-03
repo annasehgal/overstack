@@ -24,7 +24,8 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+#set to all * but in prod we have like a list (did that in one of my projects so not sure?)
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #app
     'backend',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    # cors refrerence :  https://pypi.org/project/django-cors-headers/
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
